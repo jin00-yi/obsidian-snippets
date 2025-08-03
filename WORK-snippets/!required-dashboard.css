@@ -1,0 +1,74 @@
+/* 2025-06-29 수정 */
+.dashboard {
+    font-family: inherit;  /* 시스템 폰트 적용 */
+    padding: 30px 30px;  /* top-bottom 30px, left-right 30px */
+}
+
+/* h2 밑줄과 간격 */
+.dashboard h2 {
+    border-bottom-style: solid !important;
+    border-width: 2px !important;
+    padding-bottom: 15px !important;
+}
+
+/* Get rid of the parent bullet */
+.dashboard div.markdown-preview-section>div>ul>li>.list-bullet {
+    display: none;
+}
+
+/* 북트레싱 대시보드 레이아웃 뼈대 - grid, auto-fit, min:250px */
+.dashboard.markdown-preview-view div > ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    row-gap: 30px;
+    column-gap: 50px;
+}
+
+/* task-list 간격 설정 - min:200px */
+.dashboard ul.contains-task-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    row-gap: 10px !important;
+}
+
+/* Dataview support */
+.dashboard ul.dataview {
+    row-gap: 15px !important;
+    list-style-type: disc !important;
+}
+
+
+/* 대시보드에서 체크리스트가 아닌 불릿 리스트만 들여쓰기 제거 */
+.markdown-rendered.dashboard ul > li:not(:has(input[type="checkbox"])) {
+    margin-inline-start: 0%;
+}
+.markdown-rendered.dashboard ul ul > li:not(:has(input[type="checkbox"])) {
+    margin-inline-start: 10%;
+}
+
+
+
+
+
+
+
+/* dashboard 클래스를 가진 노트에서만 프론트매터 숨기기 */
+.markdown-preview-view.show-properties.dashboard .metadata-container {
+    display: none;
+}
+
+
+
+
+
+/* dashboard inline title */
+.dashboard .inline-title {
+    margin-bottom: 1.5% !important;
+}
+
+
+
+
+/* callout width */
+.dashboard .callout {
+    width: 100% !important;
+}
