@@ -1,63 +1,48 @@
+/* 2025-08-04 수정 */
+
+/* 🎨 공통 변수 정의 */
 :root {
-  /* 🎨 공통 변수 정의 */
+  /* font_size */
+  --font-size-inline-title: 1.5em;
   --font-size-body: 16px;
-  --font-size-heading-1: 1.8em;
-  --font-size-heading-2: 1.5em;
-  --font-size-heading-3: 1.4em;
+  --font-size-heading-1: 1.58em;
+  --font-size-heading-2: 1.45em;
+  --font-size-heading-3: 1.35em;
   --font-size-heading-4: 1.28em;
   --font-size-heading-5: 1.2em;
-  --font-size-heading-6: 1.1em;
+  --font-size-heading-6: 1.15em;
 
+  /* font_weight */
+  --font-weight-thin: 400;
+  --font-weight-base: 500;
+  --font-weight-strong: 700;
+  --font-weight-heading: 800;
+
+  /* line_height */
   --line-height-base: 1.8;
   --line-height-heading: 1.6;
 
+  /* codeblock */
   --font-size-codeblock: 0.92em;
   --line-height-codeblock: 1;
   --font-size-codeblock-preview: 1.05em;
   --line-height-codeblock-preview: 1.8em;
 
+  /* padding and margin */
   --padding-vertical: 0.3em;
-  --font-weight-thin: 400;
-  --font-weight-base: 400;
-  --font-weight-strong: 700;
-  --font-weight-heading: 800;
+  --margin-heading: 0.8em 0em 0.5em 0em;
 }
 
-/* 📌 본문 줄 설정 */
-.markdown-source-view.mod-cm6 .cm-line,
-.markdown-preview-view {
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-base);
-  padding-top: var(--padding-vertical);
-  padding-bottom: var(--padding-vertical);
-  font-weight: var(--font-weight-base);
-  box-sizing: border-box;
+
+/* 📌 Inline Title */
+.markdown-preview-view .inline-title,
+.markdown-source-view.mod-cm6 .inline-title {
+  font-size: var(--font-size-inline-title);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-heading) !important;
 }
 
-/* 📌 줄번호 요소 설정 */
-.markdown-source-view.mod-cm6 .cm-gutterElement {
-  display: flex;
-  align-items: center;
-  height: auto;
-  line-height: inherit;
-  padding-top: inherit;
-  padding-bottom: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  box-sizing: inherit;
-  pointer-events: none;
-}
-
-/* 📌 줄번호 wrapper */
-.markdown-source-view.mod-cm6 .cm-gutter,
-.markdown-source-view.mod-cm6 .cm-lineNumbers {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-/* 📌 헤딩 스타일 */
+/* 📌 Heading */
 .markdown-preview-view h1,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
   font-size: var(--font-size-heading-1);
@@ -95,22 +80,75 @@
   font-weight: var(--font-weight-heading);
 }
 
-/* 📌 인라인 타이틀 (미리보기 + 소스 모두 대응) */
-.markdown-preview-view .inline-title,
-.markdown-source-view.mod-cm6 .inline-title {
-  font-size: 1.75em !important;
-  line-height: 1.5 !important;
-  font-weight: var(--font-weight-heading) !important;
+
+
+/* 📌 Box 처리로 클릭 오류 해결 */
+
+/* 본문 줄 설정 */
+.markdown-source-view.mod-cm6 .cm-line,
+.markdown-preview-view {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  padding-top: var(--padding-vertical);
+  padding-bottom: var(--padding-vertical);
+  font-weight: var(--font-weight-base);
+  box-sizing: border-box;
+}
+.markdown-preview-view {
+  line-height: 2 !important;
 }
 
-/* 📌 strong (굵은 글씨) */
+/* 줄번호 요소 설정 */
+.markdown-source-view.mod-cm6 .cm-gutterElement {
+  display: flex;
+  align-items: center;
+  height: auto;
+  line-height: inherit;
+  padding-top: inherit;
+  padding-bottom: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  box-sizing: inherit;
+  pointer-events: none;
+}
+
+/* 줄번호 wrapper */
+.markdown-source-view.mod-cm6 .cm-gutter,
+.markdown-source-view.mod-cm6 .cm-lineNumbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+
+
+/* 📌 리스트 등등... */
+
+/* strong */
 .markdown-source-view.mod-cm6 .cm-strong,
 .markdown-preview-view strong {
   font-weight: var(--font-weight-strong);
 }
 
+/* 본문 리스트 항목 전체 (내용 + 글머리표 포함) */
+.markdown-preview-view li,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line,
+.markdown-preview-view li::marker {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
 
-/* 📌 코드블록 내부 스타일 */
+.markdown-rendered li,
+.markdown-rendered ol,
+.markdown-rendered ul {
+  margin: 2px 0px;
+  font-weight: var(--font-weight-base);
+}
+
+
+
+/* 📌 Codeblock */
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
   font-size: var(--font-size-codeblock);
   line-height: var(--line-height-codeblock);
@@ -128,4 +166,82 @@
 
 .HyperMD-codeblock-begin {
   padding: 12px 0px 7.36px 16px !important;
+}
+
+
+
+/* 📌 Image */
+img {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+/* 📌 Callout */
+.markdown-source-view.mod-cm6 .callout-content p,
+.markdown-preview-view .callout-content p {
+    margin: 10px 0px 10px;
+    font-weight: var(--font-weight-base);
+}
+.callout-title-inner {
+    margin-left: 5px;
+}
+.callout-title {
+    margin: 8px 0px;
+}
+.callout {
+    padding: 0.4em 1.2em 0.4em 1.2em;
+}
+
+
+
+/* 📌 Dataview Table */
+.dataview.table-view-table {
+  width: 100% !important;
+}
+
+.dataview.table-view-table td {
+    line-height: 1.8;
+    font-weight: var(--font-weight-base);
+}
+
+.dataview.table-view-table td .internal-link {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+
+
+/* 📌 Metadata Menu */
+
+/* Property 하단 아이콘 Remove */
+.metadata-container .metadata-content .action-container .fileclass-btn-container {
+    display: none;
+}
+
+/* Source View Font Weight */
+.metadata-properties {
+  font-weight: var(--font-weight-base);
+}
+
+/* Explorer Icon 조건부 Remove */
+.nav-files-container .metadata-menu.fileclass-icon {
+  display: none;
+}
+.nav-files-container [data-path*="/FileClass/"] .metadata-menu.fileclass-icon {
+  display: flex !important;
+}
+
+
+
+/* 모든 링크에서 밑줄 제거 */
+.cm-s-obsidian a,
+.markdown-preview-view a,
+.internal-link,
+.external-link {
+  text-decoration: none !important;
 }
